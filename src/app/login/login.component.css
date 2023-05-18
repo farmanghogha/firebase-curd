@@ -1,0 +1,38 @@
+form{
+    width: 500px;
+    /* box-shadow: 10px 10px; */
+    background-color: azure;
+}
+
+/* form:hover{
+  height: 40rem;
+  width: 40rem;
+} */
+
+#btn {
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  #btn:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+  }
+
+  .container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

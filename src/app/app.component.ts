@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from './auth-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Demo-firebase';
+   
+
+  
+  constructor(private authService:AuthServiceService,private router:Router){
+    
+  }
+  logoutData(){
+    this.authService.logoutUser();
+  }
+  checklogin(){
+    if(this.authService.checklogin()==true){
+       this.router.navigate(['/login']);
+    }
+    else{
+      this.router.navigate(['/curd']);
+    }
+     
+  }
+
+isauthonticate(){
+  let data=sessionStorage.getItem("email");
+  if(data==null){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 }
