@@ -30,8 +30,10 @@ export class AuthServiceService {
         sessionStorage.setItem("email",user.email);
         this.toastr.success('Login successfully....', '');
         this.router.navigate(['/curd']);
+        this.islogin=true;
       }
     }).catch((error)=>{
+      debugger;
       if(error.code=='auth/user-not-found'){
         this.toastr.error('Login failed....', 'Invalid Email..');
       }
@@ -43,6 +45,7 @@ export class AuthServiceService {
 
   logoutUser(){
      this.fa.signOut().then(()=>{
+      this.islogin=false;
       sessionStorage.removeItem("email");
        this.router.navigate(['/login']);
      });

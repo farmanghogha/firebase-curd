@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light " id="homedata">
   <a class="navbar-brand" href="#">Navbar</a>
-  <a class="btn" (click)="checklogin()">Home </a>
+  <a class="btn" *ngIf="isauthonticate()==false">Home </a>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
     <ul class="navbar-nav mr-auto ">

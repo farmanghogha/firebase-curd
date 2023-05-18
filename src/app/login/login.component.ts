@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     }
     else{
       this.authService.loginuser(this.loginform.value);
-      //this.toastr.success('Login successfully....', '');
     }
   }
 

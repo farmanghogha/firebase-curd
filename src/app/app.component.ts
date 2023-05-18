@@ -20,15 +20,7 @@ export class AppComponent {
   logoutData(){
     this.authService.logoutUser();
   }
-  checklogin(){
-    if(this.authService.checklogin()==true){
-       this.router.navigate(['/login']);
-    }
-    else{
-      this.router.navigate(['/curd']);
-    }
-     
-  }
+  
 
 isauthonticate(){
   let data=sessionStorage.getItem("email");
