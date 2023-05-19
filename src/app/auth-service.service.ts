@@ -19,6 +19,10 @@ export class AuthServiceService {
           this.toastr.success('registered successfully....', '');
           this.router.navigate(['/login']);
         }
+     }).catch((error)=>{
+      if(error.code=='auth/email-already-in-use'){
+        this.toastr.error('Registration failed....', 'Account Already Exists.....');
+      }
      });
 
   }
@@ -36,7 +40,7 @@ export class AuthServiceService {
       debugger;
       if(error.code=='auth/user-not-found'){
         this.toastr.error('Login failed....', 'Invalid Email..');
-      }
+      }    
       else{
         this.toastr.error('Login failed....', 'Invalid Password..');
       }
