@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light " id="homedata">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <a class="btn" *ngIf="isauthonticate()==false">Home </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark " id="homedata">
+  <a class="navbar-brand m-2" href="#" style="color:white">Navbar</a>
+  <a class="btn"  style="color:white" *ngIf="isauthonticate()">Home </a>
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
     <ul class="navbar-nav mr-auto ">
@@ -8,8 +8,8 @@
            
     </ul>
     <ul class="navbar-nav">      
-        <a class="btn btn-primary m-2" *ngIf="isauthonticate()"  routerLink="/login" routerLinkActive="active" >Login</a> 
-        <a class="btn btn-danger m-2" *ngIf="isauthonticate()==false" (click)="logoutData()" routerLinkActive="active" >Logout</a> 
+        <a class="btn btn-success m-2" *ngIf="isauthonticate()==false"  routerLink="/login" routerLinkActive="active" >Login</a> 
+        <a class="btn btn-danger m-2" *ngIf="isauthonticate()" (click)="logoutData()" routerLinkActive="active" >Logout</a> 
            
     </ul>
     

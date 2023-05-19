@@ -3,13 +3,20 @@ import { IUser } from './Fiebase/IUser';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  islogin:boolean=false;
-  constructor(private fa:AngularFireAuth, public router: Router,private toastr: ToastrService) {
+  
+  users=new BehaviorSubject<IUser>(null);
+
+  constructor(
+    private fa:AngularFireAuth,
+    public router: Router,
+    private toastr: ToastrService
+     ) {
     
    }
   
@@ -28,13 +35,17 @@ export class AuthServiceService {
   }
   
   loginuser(user:IUser){
-    this.fa.signInWithEmailAndPassword(user.email,user.password).then((res)=>{
+    
+    this.fa.signInWithEmailAndPassword(user.email,user.password).then((res:any)=>{
       if(res){
-        this.islogin=true;
-        sessionStorage.setItem("email",user.email);
+         debugger;
+        localStorage.setItem("user",res.user.multiFactor.user.accessToken);
+        //sessionStorage.setItem("user",res.user.multiFactor.user.accessToken);
         this.toastr.success('Login successfully....', '');
-        this.router.navigate(['/curd']);
-        this.islogin=true;
+      //  this.users=new BehaviorSubject<IUser>(user);
+        this.users.next(user);
+        this.router.navigate(['/curd']);     
+             
       }
     }).catch((error)=>{
       debugger;
@@ -49,13 +60,11 @@ export class AuthServiceService {
 
   logoutUser(){
      this.fa.signOut().then(()=>{
-      this.islogin=false;
-      sessionStorage.removeItem("email");
+      localStorage.removeItem("user");
+      //sessionStorage.removeItem("user");
        this.router.navigate(['/login']);
      });
   }
 
-  checklogin(){
-    return this.islogin;
-  }
+ 
 }

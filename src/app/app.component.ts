@@ -23,8 +23,8 @@ export class AppComponent {
   
 
 isauthonticate(){
-  let data=sessionStorage.getItem("email");
-  if(data==null){
+ // let data=sessionStorage.getItem("email");
+  if(this.authService.users.value!=null ||localStorage.getItem("user")){
     return true;
   }
   else{
